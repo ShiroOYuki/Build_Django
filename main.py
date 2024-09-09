@@ -107,7 +107,7 @@ def edit_app_views(path, app):
         "\n"
         "# Create your views here.\n"
         "def index(request: HttpRequest):\n"
-        f"    return render(request, 'index.html')\n"
+        f"    return render(request, '{app}.html')\n"
     )
     
     write_file(os.path.join(path, app, "views.py"), content)
@@ -190,7 +190,7 @@ def edit_app_static_html(path, app):
     for r in need_replace:
         content = content.replace(r[0], r[1])
     
-    write_file(os.path.join(path, 'static', app, 'index.html'), content)
+    write_file(os.path.join(path, 'static', app, f'{app}.html'), content)
     
 def migrate(venv):
     print("Running 'manage.py migrate' command...")
